@@ -29,7 +29,9 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 * Facebook API: Restaurant can share their dynamics to social networks when they get rewards food sharing.  
 * Parse API: Store users data.
 
-## Task assignments
+## Task assignments  
+* learn database management and build our own relational or non-relational database for our backend.
+* get familiar with UI design and try to build a user interface for our app(or learn web design and build a webpage).
 
 ## Definition of First Sprint
 For the first sprint, we wanted to research as much as we could about the different technologies and different architectures we could build. Our goal for the first sprint was to have a clear plan of what kind of application we are making, what technologies/APIs we wanted to use, and how to split up work for the future. For our second sprint, we want to implement our technologies and have a prototype working!
