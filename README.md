@@ -20,10 +20,8 @@ Google Maps API & Street View Static API: For restaurants and charities to locat
 Facebook API: Restaurant can share their dynamics to social networks when they get rewards food sharing.  
 Parse API: Store users data.
 
-## References & Third-party Libraries
-
 ## Task assignments
 
-## Challenges
-
 ## Definition of First Sprint
+
+## Challenges
