@@ -10,13 +10,13 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 <center><img src="./docs/architecture.png" width="100%"/></center>
 
 ## Technologies to be used 
-# Mobile Application
+### Mobile Application
 * MYSQL or MongoDB
   - We need some type of database for our program. Because the information that will be storing will realtively consistent for all of the restaurant and individual users, we could use a relational database. We're still deciding since a non-relational database gives us freedom to change the type of information we store if we decide later on in the developing process that things should change.
 * Android Studio
   - We decided to make an Android Application since both of use have had previous exposure to Android Studio
   
-# Web Application
+### Web Application
 * MYSQL or MongoDB
   - We still need a database regardless of the type of application we make, so our reasoning is the same as above.
 * HTML/CSS
