@@ -18,4 +18,4 @@ Parse API: Store users data.
 
 ## Challenges
 
-## Task assignments
+## Definition of First Sprint
