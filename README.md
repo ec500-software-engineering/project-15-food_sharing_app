@@ -7,7 +7,7 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 * As Charities/households - we will go onto the application, see restaurants on a map in our area with excess food available. And contact with the restaurants and get the food.
 
 ## Modular Architecture 
-<center><img src="./docs/architecture.png" width="100%"/></center>
+<center><img src="./docs/architecture_sprint1.png" width="100%"/></center>
 
 ## Technologies to be used 
 ### Mobile Application
