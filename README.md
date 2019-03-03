@@ -9,16 +9,18 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 ## Modular Architecture  
 
 ## Technologies to be used  
-* MYSQL or MongoBD   
+* MYSQL or MongoBD
+  - We need some type of database for our program. Because the information that will be storing will realtively consistent for all of the restaurant and individual users, we could use a relational database. We're still deciding since a non-relational database gives us freedom to change the type of information we store if we decide later on in the developing process that things should change.
 * HTML
 * MooTools
 * Android Studio
+  - We decided to make an Android Application since both of use have had previous exposure to Android Studio
 
 
 ## APIs
-Google Maps API & Street View Static API: For restaurants and charities to locate their positions.    
-Facebook API: Restaurant can share their dynamics to social networks when they get rewards food sharing.  
-Parse API: Store users data.
+* Google Maps API & Street View Static API: For restaurants and charities to locate their positions.    
+* Facebook API: Restaurant can share their dynamics to social networks when they get rewards food sharing.  
+* Parse API: Store users data.
 
 ## Task assignments
 
