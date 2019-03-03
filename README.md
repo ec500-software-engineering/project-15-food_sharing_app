@@ -8,7 +8,12 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 
 ## Modular Architecture  
 
-## Technologies to be used
+## Technologies to be used  
+* MYSQL or MongoBD   
+* HTML
+* MooTools
+* Android Studio
+
 
 ## APIs
 Google Maps API & Street View Static API: For restaurants and charities to locate their positions.    
