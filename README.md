@@ -32,5 +32,6 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 ## Task assignments
 
 ## Definition of First Sprint
+For the first sprint, we wanted to research as much as we could about the different technologies and different architectures we could build. Our goal for the first sprint was to have a clear plan of what kind of application we are making, what technologies/APIs we wanted to use, and how to split up work for the future. For our second sprint, we want to implement our technologies and have a prototype working!
 
 ## Challenges
