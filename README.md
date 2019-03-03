@@ -6,7 +6,8 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 * As a restaurant owner - if I have excess food available for donation, I would log in to the app and indicate yes on it, then I can get “goodwill gold”. Also, it will help me with my own marketing efforts.
 * As Charities/households - we will go onto the application, see restaurants on a map in our area with excess food available. And contact with the restaurants and get the food.
 
-## Modular Architecture  
+## Modular Architecture 
+<center><img src="./docs/architecture.png" width="100%"/></center>
 
 ## Technologies to be used  
 * MYSQL or MongoBD
