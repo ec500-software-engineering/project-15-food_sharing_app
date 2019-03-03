@@ -9,11 +9,20 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 ## Modular Architecture 
 <center><img src="./docs/architecture.png" width="100%"/></center>
 
-## Technologies to be used  
-* MYSQL or MongoBD
+## Technologies to be used 
+# Mobile Application
+* MYSQL or MongoDB
   - We need some type of database for our program. Because the information that will be storing will realtively consistent for all of the restaurant and individual users, we could use a relational database. We're still deciding since a non-relational database gives us freedom to change the type of information we store if we decide later on in the developing process that things should change.
 * Android Studio
   - We decided to make an Android Application since both of use have had previous exposure to Android Studio
+  
+# Web Application
+* MYSQL or MongoDB
+  - We still need a database regardless of the type of application we make, so our reasoning is the same as above.
+* HTML/CSS
+  - Styling the front end of our web application
+* Django Backend
+  - We both prefer to code in python since it is more intuitive and Django is one of the most documented backend frameworks for python so we decided to use that. 
 
 ## APIs
 * Google Maps API & Street View Static API: For restaurants and charities to locate their positions.    
