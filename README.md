@@ -35,6 +35,3 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 
 ## Definition of First Sprint
 For the first sprint, we wanted to research as much as we could about the different technologies and different architectures we could build. Our goal for the first sprint was to have a clear plan of what kind of application we are making, what technologies/APIs we wanted to use, and how to split up work for the future. For our second sprint, we want to implement our technologies and have a prototype working!
-
-## Challenges
-A major challenge was deciding whether to do a mobile application or a web application, so we planned and developed for both. We would prefer to do a web application but are unsure if we can, so we plan to speak with Osama to clarify. In terms of a mobile application, we both use different operating systems and phones (iOS vs Android), so we weren't sure if we should try to use react native so we can develop a mobile application for both platforms or if we should use Android Studio since we both have prior experience. We decided to use Android Studio and plan to make use of the virtual phone it offers.
