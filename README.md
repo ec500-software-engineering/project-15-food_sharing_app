@@ -14,7 +14,10 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 Google Maps API & Street View Static API: For restaurants and charities to locate their positions.    
 Facebook API: Restaurant can share their dynamics to social networks when they get rewards food sharing.  
 Parse API: Store users data.
+
 ## References & Third-party Libraries
+
+## Task assignments
 
 ## Challenges
 
