@@ -1,0 +1,11 @@
+{% extends "food/base.html" %}
+
+{% block body %}
+  <h2>Welcome to FoodShare!</h2>
+  <p class="lead">
+    If you already have an account, go ahead and <a href="{% url 'login' %}">log in</a>. If you are new get started
+    by creating a <a href="{% url 'restaurant_signup' %}">Restaurant account</a> or a <a href="{% url 'person_signup' %}">Person account</a>.
+  </p>
+  <hr>
+ <!-- Got this off github https://github.com/sibtc/django-multiple-user-types-example/blob/master/django_school/classroom/templates/classroom/home.html -->
+{% endblock %}
