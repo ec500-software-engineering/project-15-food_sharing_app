@@ -1,29 +1,13 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db import transaction
-from .models import Restaurant, User
+from .models import User
 
-class RestaurantSignUpForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = User
-        # fields = ('name','phone number')
-
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_resturant = True
-        user.save()
-        restaurant = Restaurant.objects.create(user=user)
-        return user
-
-
-class PersonSignUpForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = User
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.is_person = True
-        if commit:
-            user.save()
-        return user
+class SignUpForm(UserCreationForm):
+	name = forms.CharField(help_text='Enter the name of your restaurant')
+	phone = forms.IntegerField(help_text='Enter your phone number')
+	location = forms.CharField(help_text='Enter your address')
+	
+	class Meta:
+		model = User
+		fields = ('username','password1')
