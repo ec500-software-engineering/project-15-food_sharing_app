@@ -2,10 +2,19 @@
 {% extends 'food/base.html' %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+<div class="login_container">
+	<form method="post" class="login_form" action="{% url 'login' %}">
+		{% csrf_token %}
+		<h1>Sign In</h2>
+		{% if form.errors %}
+			<p>Your username and password didn't match. Please try again.</p>
+		{% endif %}
+		<p class="input">Username</p>
+		<input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" required="">
+
+		<p class="input">Password</p>
+		<input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" required>
+		<button type="submit"><span><i class="fas fa-sign-in-alt"></i></span></button>
+	</form>
+</div>
 {% endblock %}

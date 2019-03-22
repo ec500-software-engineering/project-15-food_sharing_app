@@ -1,0 +1,163 @@
+html{
+	min-height: 100%;
+}
+
+body{
+	font-family: 'Raleway', sans-serif;
+	min-height: 100vh;
+}
+
+header{
+	background-color: #FFFFFF;
+}
+
+a{
+	color: black;
+}
+
+a:link{
+	color: black;
+}
+
+a:visited{
+	color: black;
+}
+
+.main_container{
+	min-height: 100vh;
+}
+
+.content_containter{
+	align-content: center;
+}
+
+.logo{
+	font-weight: 900;
+	font-size: 2em;
+
+}
+
+.search_container{
+	margin: 2em;
+	padding: 7em;
+	background-color: #226597;
+	height: 60vh;
+}
+
+.search_q{
+	font-size:1.5em;
+	font-weight: 900;
+	text-align: center;
+}
+
+.search_input{
+	width: 60%;
+	background-color: transparent;
+	border-style: none;
+	border-bottom: 1px solid #000000;
+}
+
+.search_input::placeholder{
+	color: #000000;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+}
+
+.search_bar{
+	padding-top: 1em;
+	text-align: center;
+}
+
+.search_bar button{
+	background-color: transparent;
+	border-style: none;
+}
+
+.login_container{
+	text-align: center;
+	margin-top: 2em;
+}
+
+.login_form input{
+	border-style: none;
+	border: 1px solid #000000;
+	border-top: 0px;
+	background: transparent;
+	display: block;
+	height: 2em;
+	width: 12em;
+	margin: 1em auto 1em auto;
+	position: relative;
+}
+
+.login_form h1{
+	font-size: 1.75em;
+	font-weight: 900;
+	align-content: center;
+	margin-bottom: 1em;
+}
+
+.login_form button{
+	background: transparent;
+	border: 1px solid #000000;
+	border-radius: 15px;
+	height: 3em;
+	width: 5em;
+}
+
+.register_container{
+	text-align: center;
+	margin-top: 2em;
+}
+
+.register_form input{
+	border-style: none;
+	border: 1px solid #000000;
+	border-top: 0px;
+	background: transparent;
+	display: block;
+	height: 2em;
+	width: 16em;
+	margin: 1em auto 2em auto;
+	position: relative;
+}
+
+#id_password1.password1{
+	margin-bottom: 0em;
+}
+
+#id_password2.password2{
+	margin-bottom: 0em;
+}
+
+.register_form h1{
+	font-size: 1.75em;
+	font-weight: 900;
+	align-content: center;
+	margin-bottom: 1em;
+}
+
+.register_form button{
+	background: transparent;
+	border: 1px solid #000000;
+	border-radius: 15px;
+	height: 3em;
+	width: 11em;
+}
+
+.register_form label{
+	font-size: .80em;
+	margin-bottom: 1em;
+}
+
+.reg_left{
+	width: 50%;
+	float: left;
+	margin-bottom: 1em;
+}
+
+.reg_right{
+	width: 50%;
+	float: left;
+	margin-bottom: 1em;
+}

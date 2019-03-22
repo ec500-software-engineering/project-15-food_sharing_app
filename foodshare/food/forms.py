@@ -2,12 +2,36 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.db import transaction
 from .models import User
+# , Food
 
 class SignUpForm(UserCreationForm):
-	name = forms.CharField(help_text='Enter the name of your restaurant')
-	phone = forms.IntegerField(help_text='Enter your phone number')
-	location = forms.CharField(help_text='Enter your address')
+	name = forms.CharField(
+		widget = forms.TextInput(
+			attrs = {
+				'placeholder':'Name of your Restaurant'
+			}
+		)
+	)
+	phone = forms.IntegerField(
+		widget = forms.NumberInput(
+			attrs = {
+				'placeholder':'Phone Number'
+			}
+		)
+	)
+	location = forms.CharField(
+		widget = forms.TextInput(
+			attrs = {
+				'placeholder':'Enter your address'
+			}
+		)
+	)
 	
 	class Meta:
 		model = User
-		fields = ('username','password1')
+		fields = ('name', 'phone', 'location', 'username','password1')
+
+# class AddFoodForm(forms.ModelForm):
+# 	class Meta:
+# 		model = Food
+# 		fields = ('tile', 'description', 'vegan', 'vegetarian', 'gluten_free', 'kosher', 'halal')

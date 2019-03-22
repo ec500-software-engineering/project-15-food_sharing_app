@@ -2,15 +2,36 @@
 {% load staticfiles %}
 <html>
 <head>
-	<title>Food Share Website</title>
+	<title>Welcome to Food Share!</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/food.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:400,700,900">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-	<h1>Food Thing Home</h1>
-	<div class="content container">
-		{% block content %}
-		{% endblock %}
+	<div class="main_container">
+		<header class="main_header">
+			<div class="navbar">
+				<div class="logo">
+					<a href="{% url 'index' %}">Food Share</a>
+				</div>
+				<div class="login">
+					{% if user.is_authenticated %}
+						<span><strong>Hi {{ user.username }}!</strong></span>
+						<a href="{% url 'logout' %}">Logout</a>
+					{% else %}
+						<span><strong>Are you restaurant?</strong></span>
+						<a href="{% url 'register' %}">Sign Up</a>
+						<span>/</span>
+						<a href="{% url 'login' %}">Sign In</a>
+					{% endif %}
+				</div>
+			</div>
+		</header>
+		<div class="content_container">
+			{% block content %}
+			{% endblock %}
+		</div>
 	</div>
 </body>
 </html>

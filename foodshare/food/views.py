@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.db import transaction
 from django.views.generic import CreateView, TemplateView
 from .forms import SignUpForm
+# , AddFoodForm
 from .models import User, RestaurantProfile
 
 # Create your views here.
@@ -39,4 +40,21 @@ def register(request):
     context = {'form':form}
     return render(request, 'registration/signup.html', context)
 
+# @login_required
+# def add_food(request):
+#     if request.method == "POST":
+#         form = AddFoodForm(request.POST)
+#         if form.is_valid():
+#             food = form.save(commit=False)
+#             provider = request.user
+#             food.save()
+#             available = RestaurantProfile.objects.get(user=request.user) #checks if user already has food availabe
+#             if not availabe.food_available:
+#                 availabe.food_available = True
+#             availabe.save()
+#             return redirect('/')
+#     else:
+#         form = AddFoodForm()
+#         context = {'form': form}
+#     return render(request, 'food/add_food.html', context)
     

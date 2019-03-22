@@ -1,9 +1,41 @@
 {% extends 'food/base.html' %}
 {% block content %}
-  <form method="POST" action="{% url 'register' %}">
+<div class="register_container">
+	<form method="post" class="register_form" action="{% url 'register' %}">
+		{% csrf_token %}
+		<h1>Register</h1>
+		<div class="reg_left">
+			<p class="input">Name of Restaurant</p>
+			<input type="text" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" required="">
+
+			<p class="input">Phone #</p>
+			<input type="text" id="{{ form.phone.id_for_label }}" name="{{ form.phone.html_name }}" required="">
+
+			<p class="input">Restaurant Address</p>
+			<input type="text" id="{{ form.location.id_for_label }}" name="{{ form.location.html_name }}" required="">
+		</div>
+		
+		<div class="reg_right">
+			<p class="input">Username</p>
+			<input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" required="">
+
+			<p class="input">Password</p>
+			<input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.html_name }}" class="password1" required>
+			<label>Minimum 8 characters. Can't be fully numeric</label>
+
+			<p class="input">Password Confirmation</p>
+			<input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" class="password2"required >
+			<label>Enter the same password as before, for verification</label>
+		</div>
+		<button type="submit">Create my account</button>
+	</form>
+</div>
+  <!-- <form method="POST" action="{% url 'register' %}">
   	{% csrf_token %}
-  	{{ form.as_p }}
-  	{{ profile_form.as_p}}
+  	<table class="signup_table">
+  		{{ form }}
+  	</table>
   	<button type="submit" class="btn btn-success">Sign up</button>
-  </form>
+  </form> -->
 {% endblock %}
+
