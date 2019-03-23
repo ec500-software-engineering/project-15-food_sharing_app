@@ -7,18 +7,12 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 * As Charities/households - we will go onto the application, see restaurants on a map in our area with excess food available. And contact with the restaurants and get the food.
 
 ## Modular Architecture 
-<center><img src="./docs/architecture_sprint1.png" width="100%"/></center>
+<center><img src="./docs/architecture.png" width="100%"/></center>
 
 ## Technologies to be used 
-### Mobile Application
-* MYSQL or MongoDB
-  - We need some type of database for our program. Because the information that will be storing will realtively consistent for all of the restaurant and individual users, we could use a relational database. We're still deciding since a non-relational database gives us freedom to change the type of information we store if we decide later on in the developing process that things should change.
-* Android Studio
-  - We decided to make an Android Application since both of use have had previous exposure to Android Studio
-  
 ### Web Application
-* MYSQL or MongoDB
-  - We still need a database regardless of the type of application we make, so our reasoning is the same as above.
+* MYSQL
+  - We are currently using the default SPL database in django, for next step we will try to change the database to cloud database like AWS or Firebase.
 * HTML/CSS
   - Styling the front end of our web application
 * Django Backend
@@ -31,7 +25,22 @@ Across the world, there are restaurants that waste tons of excess food everyday.
 
 ## Task assignments  
 * learn database management and build our own relational or non-relational database for our backend.
-* get familiar with UI design and try to build a user interface for our app(or learn web design and build a webpage).
+* get familiar with UI design and try to build a user interface for our web app.
 
 ## Definition of First Sprint
-For the first sprint, we wanted to research as much as we could about the different technologies and different architectures we could build. Our goal for the first sprint was to have a clear plan of what kind of application we are making, what technologies/APIs we wanted to use, and how to split up work for the future. For our second sprint, we want to implement our technologies and have a prototype working!
+For the first sprint, we wanted to research as much as we could about the different technologies and different architectures we could build. Our goal for the first sprint was to have a clear plan of what kind of application we are making, what technologies/APIs we wanted to use, and how to split up work for the future. For our second sprint, we want to implement our technologies and have a prototype working!  
+
+## Sprint 2
+For now we have built the initial main page for charities to search for restaurants around them, sign in and sign up page for restaurants. Considering that the users who are looking for food don't have to register in our website, we delete the users registration part in our website and backedn database.
+### Initial main page
+<center><img src="./docs/mainpage.png" width="100%"/></center>
+Charities can search the information about restaurents and foods offerd by input their address.  
+
+### Sign in page
+<center><img src="./docs/signin.png" width="100%"/></center>  
+For restaurants who are willing to offer foods they could first sign in.  
+
+### Sign up page
+<center><img src="./docs/signup.png" width="100%"/></center>  
+If the restarants are new to our app, they should sign up first.  
+
