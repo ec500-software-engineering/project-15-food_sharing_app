@@ -38,9 +38,9 @@ Charities can search the information about restaurents and foods offerd by input
 
 ### Sign in page
 <center><img src="./docs/signin.png" width="100%"/></center>  
-For restaurants who are willing to offer foods they could first sign in.  
+For restaurants who are willing to offer foods they could firstly sign in.  
 
 ### Sign up page
 <center><img src="./docs/signup.png" width="100%"/></center>  
-If the restarants are new to our app, they should sign up first.  
+Sign up page for restaurants. 
 
