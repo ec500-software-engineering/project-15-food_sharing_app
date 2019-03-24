@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
-from django.db import transaction
-from django.views.generic import CreateView, TemplateView
+# from django.db import transaction
+from django.views.generic import TemplateView
 from .forms import SignUpForm
 # , AddFoodForm
 from .models import User, RestaurantProfile
