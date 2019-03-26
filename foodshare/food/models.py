@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 class RestaurantProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 	name = models.CharField(max_length=265)
-	amount_gold = models.IntegerField(null=True, blank=True)
 	food_available = models.BooleanField(default=False)
 	phone = models.CharField(max_length=265)
 	location = models.CharField(max_length=265, blank=True)

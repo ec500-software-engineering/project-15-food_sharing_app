@@ -9,29 +9,26 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-	<div class="main_container">
-		<header class="main_header">
-			<div class="navbar">
-				<div class="logo">
-					<a href="{% url 'index' %}">Food Share</a>
-				</div>
-				<div class="login">
-					{% if user.is_authenticated %}
-						<span><strong>Hi {{ user.username }}!</strong></span>
-						<a href="{% url 'logout' %}">Logout</a>
-					{% else %}
-						<span><strong>Are you restaurant?</strong></span>
-						<a href="{% url 'register' %}">Sign Up</a>
-						<span>/</span>
-						<a href="{% url 'login' %}">Sign In</a>
-					{% endif %}
-				</div>
-			</div>
-		</header>
-		<div class="content_container">
-			{% block content %}
-			{% endblock %}
+	<div class="navbar">
+		<div class="logo">
+			<a href="{% url 'index' %}">Food Share</a>
 		</div>
+		<div class="nav_container">
+			<!-- <a href="" class="about">About</a> -->
+			{% if user.is_authenticated %}					
+				<span><strong>Hi {{ user.username }}!</strong></span>
+				<a href="{% url 'logout' %}">Logout</a>
+			{% else %}
+				<span><strong>Are you restaurant?</strong></span>
+				<a href="{% url 'register' %}">Sign Up</a>
+				<span>/</span>
+				<a href="{% url 'login' %}">Sign In</a>
+			{% endif %}
+		</div>
+	</div>
+	<div class="content_container">
+		{% block content %}
+		{% endblock %}
 	</div>
 </body>
 </html>

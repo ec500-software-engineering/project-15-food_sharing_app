@@ -1,13 +1,17 @@
 {% extends "food/base.html" %}
 {% load static %}
 {% block content %}
-	<div class="search_container">
+	<div class="search_container" style="background-image: url({% static 'images/background.jpg' %});">
+		<div class="wrapper">
+			
+		
 		<p class="search_q">Looking for food near you?</p>
 		<div class="search_bar">
 			<form>
 				<input type="text" placeholder="Enter your address" class="search_input">
 				<button><span><i class="fas fa-arrow-right"></i></span></button>
 			</form>	
+		</div>
 		</div>
 	</div>
 {% endblock %}
