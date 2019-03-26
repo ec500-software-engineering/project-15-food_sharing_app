@@ -7,7 +7,7 @@ Across the world, there are restaurants other food services that waste tons of e
 * As Charities/households - we will go onto the application, see restaurants on a map in our area with excess food available. And contact with the restaurants and get the food.
 
 ## Modular Architecture 
-<center><img src="./docs/architecture.png" width="100%"/></center>
+<center><img src="./docs/architecture_new.png" width="100%"/></center>
 
 ## Technologies to be used 
 ### Web Application
@@ -32,7 +32,7 @@ For the first sprint, we wanted to research as much as we could about the differ
 ## Sprint 2
 For now we have built the initial main page for charities to search for restaurants around them, sign in and sign up page for restaurants. Considering that the users who are looking for food don't have to register in our website, we delete the users registration part in our website and backedn database.
 ### Initial main page
-<center><img src="./docs/mainpage.png" width="100%"/></center>
+<center><img src="./docs/mainpage_new.png" width="100%"/></center>
 Charities can search the information about restaurents and foods offerd by input their address.  
 
 ### Sign in page
