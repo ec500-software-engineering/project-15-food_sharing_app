@@ -1,0 +1,18 @@
+{% extends 'food/base.html' %}
+{% block content %}
+	<div class="content_container">
+		<div class="food item">
+			<h2>Food items available</h2>
+			<ul>
+				{% for food in foods%}
+				<li>
+					{{food.title}}
+					<li>
+						{{food.provider}}
+					</li>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block content %}
+	<div class="content_container">
+		<h1>Add Food</h1>
+		<form>
+			{% csrf_token %}
+			{{form.as_p}}
+			<button type="submit">Submit</button>	
+		</form>	
+	</div>
+{% endblock %}

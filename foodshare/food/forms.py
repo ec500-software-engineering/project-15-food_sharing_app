@@ -33,4 +33,4 @@ class SignUpForm(UserCreationForm):
 # class AddFoodForm(forms.ModelForm):
 # 	class Meta:
 # 		model = Food
-# 		fields = ('tile', 'description', 'vegan', 'vegetarian', 'gluten_free', 'kosher', 'halal')
+# 		fields = ('title', 'description', 'vegan', 'vegetarian', 'gluten_free', 'kosher', 'halal')

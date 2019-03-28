@@ -18,17 +18,16 @@
 			{% if user.is_authenticated %}					
 				<span><strong>Hi {{ user.username }}!</strong></span>
 				<a href="{% url 'logout' %}">Logout</a>
+				<a href="{% url 'add_food' %}">Add Food</a>
 			{% else %}
 				<span><strong>Are you restaurant?</strong></span>
-				<a href="{% url 'register' %}">Sign Up</a>
+				<span><a href="{% url 'register' %}">Sign Up</a></span>
 				<span>/</span>
-				<a href="{% url 'login' %}">Sign In</a>
+				<span><a href="{% url 'login' %}">Sign In</a></span>
 			{% endif %}
 		</div>
 	</div>
-	<div class="content_container">
-		{% block content %}
-		{% endblock %}
-	</div>
+	{% block content %}
+	{% endblock %}
 </body>
 </html>

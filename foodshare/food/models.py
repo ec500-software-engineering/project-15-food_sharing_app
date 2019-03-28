@@ -12,7 +12,7 @@ class RestaurantProfile(models.Model):
 # class Food(models.Model):
 # 	provider = models.ForeignKey(User, on_delete=models.CASCADE)
 # 	title = models.CharField(max_length=255)
-#	description = models.CharField(max_length=255)
+# 	description = models.CharField(max_length=255)
 # 	vegan = models.BooleanField(default=False)
 # 	vegetarian = models.BooleanField(default=False)
 # 	gluten_free = models.BooleanField(default=False)
