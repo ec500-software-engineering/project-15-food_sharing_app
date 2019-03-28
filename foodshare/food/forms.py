@@ -10,25 +10,13 @@ number_validator = RegexValidator(
 )
 
 class SignUpForm(UserCreationForm):
-	name = forms.CharField(
-		widget = forms.TextInput(
-			attrs = {
-				'placeholder':'Name of your Restaurant'
-			}
-		)
-	)
+	name = forms.CharField()
 	phone = forms.CharField(
 		required = True,
 		validators = [number_validator],
 		max_length = 10
 	)
-	location = forms.CharField(
-		widget = forms.TextInput(
-			attrs = {
-				'placeholder':'Enter your address'
-			}
-		)
-	)
+	location = forms.CharField()
 	
 	class Meta:
 		model = User
