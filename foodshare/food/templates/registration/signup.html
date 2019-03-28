@@ -5,7 +5,7 @@
 		{% csrf_token %}
 		<h1>Register</h1>
 		{% if form.errors %}
-			{% firstof form.username.errors form.password1.errors form.password2.errors %}
+			{% firstof form.phone.errors form.username.errors form.password1.errors form.password2.errors %}
 		{% endif %}
 		<div class="reg_left">
 			<p class="input">Name of Restaurant</p>
