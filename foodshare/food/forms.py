@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
-from .models import User
-# , Food
+from .models import User, Food
 
 number_validator = RegexValidator(
 	r'^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$', 
@@ -22,7 +21,7 @@ class SignUpForm(UserCreationForm):
 		model = User
 		fields = ('name', 'phone', 'location', 'username','password1')
 
-# class AddFoodForm(forms.ModelForm):
-# 	class Meta:
-# 		model = Food
-# 		fields = ('title', 'description', 'vegan', 'vegetarian', 'gluten_free', 'kosher', 'halal')
+class AddFoodForm(forms.ModelForm):
+	class Meta:
+		model = Food
+		fields = ('title', 'description', 'vegan', 'vegetarian', 'gluten_free', 'kosher', 'halal')

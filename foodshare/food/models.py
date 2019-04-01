@@ -9,12 +9,12 @@ class RestaurantProfile(models.Model):
 	phone = models.CharField(max_length=265)
 	location = models.CharField(max_length=265, blank=True)
 
-# class Food(models.Model):
-# 	provider = models.ForeignKey(User, on_delete=models.CASCADE)
-# 	title = models.CharField(max_length=255)
-# 	description = models.CharField(max_length=255)
-# 	vegan = models.BooleanField(default=False)
-# 	vegetarian = models.BooleanField(default=False)
-# 	gluten_free = models.BooleanField(default=False)
-# 	kosher = models.BooleanField(default=False)
-# 	halal = models.BooleanField(default=False)
+class Food(models.Model):
+	provider = models.ForeignKey(User, on_delete=models.CASCADE)
+	title = models.CharField(max_length=255)
+	description = models.CharField(max_length=255)
+	vegan = models.BooleanField(default=False)
+	vegetarian = models.BooleanField(default=False)
+	gluten_free = models.BooleanField(default=False)
+	kosher = models.BooleanField(default=False)
+	halal = models.BooleanField(default=False)
