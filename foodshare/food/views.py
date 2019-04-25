@@ -5,7 +5,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DeleteView
 from django.core.mail import EmailMessage, get_connection
-# from django.core import serializers
 from django.conf import settings
 from .forms import SignUpForm, AddFoodForm, ClaimFoodForm
 from .models import User, RestaurantProfile, Food
