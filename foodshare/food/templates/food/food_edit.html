@@ -2,11 +2,11 @@
 {% load static %}
 {% block content %}
 	<div class="content_container">
-		<h1>Add Food</h1>
-		<form method="post" class="add_food" action="{% url 'add_food' %}">
+		<h1>Edit Food</h1>
+		<form method="POST">
 			{% csrf_token %}
 			{{form.as_p}}
-			<button type="submit">Submit</button>	
+			<button type="submit">Save</button>	
 		</form>	
 	</div>
 {% endblock %}

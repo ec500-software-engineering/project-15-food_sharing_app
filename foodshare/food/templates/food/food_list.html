@@ -1,15 +1,40 @@
 {% extends 'food/base.html' %}
+{% load static %}
 {% block content %}
 	<div class="content_container">
 		<div class="food item">
 			<h2>Food items available</h2>
+			<form class="controls" action="{% url 'food_list' %}">
+				{% csrf_token %}
+    			<h4>Restrictions</h4>
+    			<div class="checkbox">
+      				<input type="checkbox" value="vegan" name="restrictions" {% if restrictions.vegan %} checked {% endif%} />
+      				<label>Vegan</label>
+      				<input type="checkbox" value="vegetarian" name="restrictions" {% if restrictions.vegetarian %} checked {% endif%} />
+      				<label>Vegetarian</label>
+      				<input type="checkbox" value="gluten_free" name="restrictions" {% if restrictions.gluten_free %} checked {% endif%} />
+      				<label>Gluten-Free</label>
+    			</div>
+  				<button type="submit" formmethod="POST">Filter</button>
+			</form>
+			<form action="{% url 'food_list' %}">
+				<button type="submit">Reset Filters</button>
+			</form>
 			<ul>
 				{% for food in foods%}
 				<li>
-					{{food.title}}
-					<li>
-						{{food.provider}}
-					</li>
+					<a href="{% url 'food_detail' pk=food.pk %}">{{food.title}}</a>
+					<ul>
+						<li>vegan: {{food.vegan}}</li>
+						<li>veg: {{food.vegetarian}}</li>
+						<li>gf: {{food.gluten_free}}</li>
+						<!-- <li>
+							{{food.location}}
+						</li>
+						<li>
+							Availabile: {{food.available}}
+						</li> -->
+					</ul>
 				</li>
 				{% endfor %}
 			</ul>

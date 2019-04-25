@@ -1,9 +1,9 @@
-{% extends "food/base.html" %}
+{% extends 'food/base.html' %}
 {% load static %}
 {% block content %}
 	<div class="content_container">
-		<h1>Add Food</h1>
-		<form method="post" class="add_food" action="{% url 'add_food' %}">
+		<h1>Claim Food</h1>
+		<form method="post" class="">
 			{% csrf_token %}
 			{{form.as_p}}
 			<button type="submit">Submit</button>	

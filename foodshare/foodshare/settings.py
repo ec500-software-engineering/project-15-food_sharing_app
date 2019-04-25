@@ -28,6 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Email Config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'foodshareEC500@gmail.com'
+EMAIL_HOST_PASSWORD = 'xzwgvtjrddeqdwip'
 
 # Application definition
 
