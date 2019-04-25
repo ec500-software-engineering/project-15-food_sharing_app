@@ -29,7 +29,7 @@ def register(request):
             name = form.cleaned_data.get('name')
             phone = form.cleaned_data.get('phone')
             location = form.cleaned_data.get('location')
-            results = gmaps.geocode(restaurant.location)
+            results = gmaps.geocode(location)
             latitude = results[0]['geometry']['location']['lat']
             longitude = results[0]['geometry']['location']['lng']
             user.save()
