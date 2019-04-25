@@ -5,7 +5,7 @@
 		{% csrf_token %}
 		<h1>Register</h1>
 		{% if form.errors %}
-			{% firstof form.phone.errors form.username.errors form.password1.errors form.password2.errors %}
+			{% firstof form.phone.errors form.username.errors form.email.errors form.password1.errors form.password2.errors %}
 		{% endif %}
 		<div class="reg_left">
 			<p class="input">Name of Restaurant</p>
@@ -15,7 +15,10 @@
 			<input type="text" id="{{ form.phone.id_for_label }}" name="{{ form.phone.html_name }}" required="">
 
 			<p class="input">Restaurant Address</p>
-			<input type="text" id="{{ form.location.id_for_label }}" name="{{ form.location.html_name }}" required="">
+			<input type="text" id="address_search" name="{{ form.location.html_name }}" required="">
+
+			<p class="input">Email Address</p>
+			<input type="text" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" required="">
 		</div>
 		
 		<div class="reg_right">
@@ -33,12 +36,13 @@
 		<button type="submit">Create my account</button>
 	</form>
 </div>
-  <!-- <form method="POST" action="{% url 'register' %}">
-  	{% csrf_token %}
-  	<table class="signup_table">
-  		{{ form }}
-  	</table>
-  	<button type="submit" class="btn btn-success">Sign up</button>
-  </form> -->
+
+<script>
+  	var placesAutocomplete = places({
+   		appId: 'plL015VD6UKT',
+   		apiKey: '989bd6db29a5c5c1a269b78c7a95bfd8',
+   		container: document.querySelector('address_search')
+ 	});
+</script>
 {% endblock %}
 

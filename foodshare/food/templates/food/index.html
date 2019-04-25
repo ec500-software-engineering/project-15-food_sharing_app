@@ -4,14 +4,20 @@
 	<div class="search_container" style="background-image: url({% static 'images/background.jpg' %});">
 		<div class="wrapper">
 			
-		
 		<p class="search_q">Looking for food near you?</p>
 		<div class="search_bar">
-			<form>
-				<input type="text" placeholder="Enter your address" class="search_input">
-				<button><span><i class="fas fa-arrow-right"></i></span></button>
+			<form action="{% url 'food_list' %}">
+				<input type="text" placeholder="Enter your address" class="search_input" id="search_input">
+				<button type="submit"><span><i class="fas fa-arrow-right"></i></span></button>
 			</form>	
 		</div>
 		</div>
 	</div>
+	<script>
+  		var placesAutocomplete = places({
+    		appId: 'plL015VD6UKT',
+    		apiKey: '989bd6db29a5c5c1a269b78c7a95bfd8',
+    		container: document.querySelector('#search_input')
+  		});
+	</script>
 {% endblock %}
