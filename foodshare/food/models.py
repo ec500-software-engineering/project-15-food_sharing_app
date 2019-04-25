@@ -7,8 +7,8 @@ class RestaurantProfile(models.Model):
 	name = models.CharField(max_length=265)
 	phone = models.CharField(max_length=265)
 	location = models.CharField(max_length=265, blank=True)
-	# latitude = models.FloatField(blank=True)
-	# longitude = models.FloatField(blank=True)
+	latitude = models.FloatField(blank=True)
+	longitude = models.FloatField(blank=True)
 	email = models.CharField(max_length=265, blank=True)
 
 class Food(models.Model):

@@ -3,9 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, DeleteView
+from django.views.generic import TemplateView, DeleteView
 from django.core.mail import EmailMessage, get_connection
-from django.core import serializers
+# from django.core import serializers
 from django.conf import settings
 from .forms import SignUpForm, AddFoodForm, ClaimFoodForm
 from .models import User, RestaurantProfile, Food
@@ -38,6 +38,8 @@ def register(request):
                 name = name,
                 phone = phone,
                 location = location,
+                longitude = longitude,
+                latitude = latitude,
                 email = email,
             )
             profile.save()
@@ -92,13 +94,13 @@ def food_list(request):
         restrictions = request.POST.getlist('restrictions')
         if 'vegan' in restrictions:
             food = food.filter(vegan=True)
-            res['vegan'] = True;
+            res['vegan'] = True
         if 'vegetarian' in restrictions:
             food = food.filter(vegetarian=True)
-            res['vegetarian'] = True;
+            res['vegetarian'] = True
         if 'gluten_free' in restrictions:
             food = food.filter(gluten_free=True)
-            res['gluten_free'] = True;
+            res['gluten_free'] = True
         context = {'foods': food, 'restrictions': res}
         print(res)
         return render(request, 'food/food_list.html', context)
@@ -149,7 +151,6 @@ def send_email(first, last, phone, email, restaurant, food):
         reply_to = [email,]
     )
     # email to claimer
-    cus_s = " "
     cus_message = "Hi {}, you claimed {} from {}. You can pick it up from {}. To contact the restaurant, call {} or reply to this email to email the restaurant directly.".format(first, food.title, restaurant.name, food.location, restaurant.phone)
     cus_email = EmailMessage(
         subject,
