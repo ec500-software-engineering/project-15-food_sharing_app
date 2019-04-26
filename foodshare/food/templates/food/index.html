@@ -9,7 +9,14 @@
 			<form action="{% url 'food_list' %}">
 				<input type="text" placeholder="Enter your address" class="search_input" id="search_input">
 				<button type="submit"><span><i class="fas fa-arrow-right"></i></span></button>
-			</form>	
+			</form>
+			<script>
+			function testJS() {
+			var b = document.getElementById('search_input').value,
+			url = 'http://path_to_your_html_files/next.html?name=' + encodeURIComponent(b);
+
+			document.location.href = url;}
+			</script>
 		</div>
 		</div>
 	</div>
