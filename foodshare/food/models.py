@@ -7,13 +7,13 @@ class RestaurantProfile(models.Model):
 	name = models.CharField(max_length=265)
 	phone = models.CharField(max_length=265)
 	location = models.CharField(max_length=265, blank=True)
-	latitude = models.FloatField(blank=True)
-	longitude = models.FloatField(blank=True)
 	email = models.CharField(max_length=265, blank=True)
 
 class Food(models.Model):
 	provider = models.ForeignKey(User, on_delete=models.CASCADE)
 	location = models.CharField(max_length=265)
+	lat = models.FloatField(null=True)
+	lng = models.FloatField(null=True)
 	title = models.CharField(max_length=255)
 	available = models.BooleanField(default=True)
 	description = models.CharField(max_length=255)

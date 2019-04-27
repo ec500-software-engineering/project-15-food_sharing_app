@@ -28,17 +28,12 @@ def register(request):
             name = form.cleaned_data.get('name')
             phone = form.cleaned_data.get('phone')
             location = form.cleaned_data.get('location')
-            results = gmaps.geocode(location)
-            latitude = results[0]['geometry']['location']['lat']
-            longitude = results[0]['geometry']['location']['lng']
             user.save()
             profile = RestaurantProfile.objects.create(
                 user_id = User.objects.get(username=user).id,
                 name = name,
                 phone = phone,
                 location = location,
-                longitude = longitude,
-                latitude = latitude,
                 email = email,
             )
             profile.save()
@@ -59,8 +54,13 @@ def add_food(request):
         restaurant = RestaurantProfile.objects.get(user=request.user)
         if form.is_valid():
             obj = Food(**form.cleaned_data)
+            results = gmaps.geocode(restaurant.location)
+            latitude = float('%.3f'%(results[0]['geometry']['location']['lat']))
+            longitude = float('%.3f'%(results[0]['geometry']['location']['lng']))  
             obj.provider = restaurant.user
             obj.location = restaurant.location
+            obj.lat = latitude
+            obj.lng = longitude
             obj.save()
             return redirect('food_list')
     else:
