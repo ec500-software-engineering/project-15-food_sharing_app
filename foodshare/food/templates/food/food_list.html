@@ -91,7 +91,7 @@
       //   				
             });  
         	{% endfor %}
-          
+
           // get users current location.
           infoWindow2 = new google.maps.InfoWindow;
           if (navigator.geolocation) {
@@ -124,29 +124,18 @@
                 map: map,
                 position: results[0].geometry.location
             });
+            map.setCenter(results[0].geometry.location);
             infoWindow3 = new google.maps.InfoWindow;
             google.maps.event.addListener(marker3,'click', function(){
               infoWindow3.setContent(search);
               infoWindow3.open(map,marker3);
             });
             marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
-            // if(marker2 != marker1 && marker1 != null) {
-            //   marker1.setMap(null);
-
-            // }
-            // marker1 = marker2;
           	} else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
-        	});	
-
-            // var marker3 = new google.maps.Marker({
-            //     map: map,
-            //     position: search
-            // });
-            // marker3.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
-
-  			
+        	});
+          
   			// function setMarkers(dict){
   			// 	for (var i = 0; i < Object.keys(dict).length; i++){
   			// 		var marker1 = new google.maps.Marker({
