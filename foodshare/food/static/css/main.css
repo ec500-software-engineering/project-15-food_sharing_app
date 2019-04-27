@@ -1,5 +1,5 @@
 html{
-	min-height: 100%;
+	min-height: 100vh;
 }
 
 body{
@@ -118,6 +118,7 @@ a:visited{
 	margin-top: 5em;
 	width: 100%;
 	min-height: 100vh;
+	max-height: 100vh;
 }
 
 .errorlist{
@@ -194,13 +195,20 @@ a:visited{
 }
 
 .reg_left{
-	width: 50%;
+	width: 50vh;
+	height: 50vh;
 	float: left;
+	overflow: auto;
 	margin-bottom: 1em;
 }
 
 .reg_right{
-	width: 50%;
+	width: 50vh;
+	height: 50vh;
 	float: left;
 	margin-bottom: 1em;
+}
+
+.hover{
+	color: green;
 }

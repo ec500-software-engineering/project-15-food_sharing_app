@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 	<div class="content_container">
-		<div class="food item">
 			<h2>Food items available</h2>
 			<form class="controls" action="{% url 'food_list' %}">
 				{% csrf_token %}
@@ -20,9 +19,10 @@
 			<form action="{% url 'food_list' %}">
 				<button type="submit">Reset Filters</button>
 			</form>
+			<div class="food_item reg_left" style="height: 75vh; overflow-y: scroll;">
 			<ul>
 				{% for food in foods%}
-				<li>
+				<li id="{{food.pk}}">
 					<a href="{% url 'food_detail' pk=food.pk %}" id="list">{{food.title}}</a>
 					<ul>
 						<li>vegan: {{food.vegan}}</li>
@@ -40,12 +40,19 @@
 				</li>
 				{% endfor %}
 			</ul>
-	<div class="food search">
+		</div>
+		<div class="map_container reg_right" style="">
+			<div id="map" style="width: 75vh; height: 75vh; position: absolute;"></div>
+		</div>
+
+
+<!-- 	<div class="food search">
 	<div>
       <input id="address" type="textbox" value="">
       <input type="button" value="search" onclick="codeAddress()">
     </div>
-		<div id="map" style="width: 50%; height: 50%; position: absolute;"></div>
+	</div> -->
+</div>
 	<script>
       // var infoWindow, geocoder, map, marker1;
       function initMap() {
@@ -69,9 +76,18 @@
         		})
 
         		google.maps.event.addListener(marker,'click', function(){
-  						infoWindow.setContent('<h3>'+ '{{food.title}}'+'</h3>');
+  						infoWindow.setContent(
+  							// '<h3>'+ '{{food.title}}'+'</h3>'
+  							"<h5><a href=\"{% url 'food_detail' pk=food.pk %}\">{{food.title}}</a></h5>"
+  							);
   						infoWindow.open(map,marker);
-  					});
+
+  						document.getElementById("{{food.pk}}").classList.add('hover');
+  					
+      //   		google.maps.event.addListener(marker, 'mouseover', function(){
+      //   				infoWindow.open(map,marker);
+      //   				
+        		});
         	{% endfor %}
   			
   			// function setMarkers(dict){
@@ -284,9 +300,4 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMG1pZuYC62w7geoDmMr0mELCBmoFtvY&language=en&callback=initMap">
     </script>
-    </div>
-		</div>
-		</div>
-		</div>
-
 {% endblock %}
