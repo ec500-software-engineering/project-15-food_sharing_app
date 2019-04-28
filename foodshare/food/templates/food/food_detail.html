@@ -1,7 +1,7 @@
 {% extends 'food/base.html' %}
 {% load static %}
 {% block content %}
-	<div class="content_container">
+	<div class="content_container" style="background-image: url({% static 'images/background2.jpg'%});">
 		<div class="reg_right" style="width: 50%;">
 		<h3 style="font-weight: bold;">Food Item: {{ food.title }}</h3>
 		<h5>Posted By: {{ restaurant.name }}</h5>
@@ -29,7 +29,7 @@
 		{% endif %}
 	</div>
 	<div class="map_container reg_right" style="">
-			<div id="map" style="width: 50%; height: 75vh; position: absolute;"></div>
+			<div id="map" style="width: 100vh; height: 75vh; position: absolute;"></div>
 	</div>
 	</div>
 	<script type="text/javascript">

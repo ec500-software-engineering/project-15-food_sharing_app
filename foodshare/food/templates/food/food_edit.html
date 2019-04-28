@@ -1,7 +1,7 @@
 {% extends "food/base.html" %}
 {% load static %}
 {% block content %}
-	<div class="content_container">
+	<div class="content_container" style="background-image: url({% static 'images/background2.jpg'%});">
 		<h1 style="font-weight: bold;">Edit Food</h1>
 		<form method="POST">
 			{% csrf_token %}

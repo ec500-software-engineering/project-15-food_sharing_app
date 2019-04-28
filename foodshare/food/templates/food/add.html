@@ -1,7 +1,7 @@
 {% extends "food/base.html" %}
 {% load static %}
 {% block content %}
-	<div class="content_container">
+	<div class="content_container" style="background-image: url({% static 'images/background2.jpg'%});">
 		<h1 style="font-weight: bold;">Add Food</h1>
 		{% if form.errors %}
 			{% if form.title.errors %}
@@ -16,22 +16,22 @@
 		<form method="POST" class="add_food" action="{% url 'add_food' %}" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div class="reg_left">
-			<p class="input">Title</p>
-			<input type="text" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" required="">
+			<p class="input" style="font-weight: bold;">Title</p>
+			<input type="text" style="background-color:transparent; border:1px solid black;" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" required="">
 
-			<p class="input" style="margin-top: 2em;">Description</p>
-			<textarea id="{{ form.description.id_for_label }}" name="{{ form.description.html_name }}" required="" rows="6" cols="30"></textarea> 
+			<p class="input" style="margin-top: 2em; font-weight: bold">Description</p>
+			<textarea id="{{ form.description.id_for_label }}" name="{{ form.description.html_name }}"style="background-color:transparent; border:1px solid black;" required="" rows="6" cols="30"></textarea> 
 		</div>
 		
 		<div class="reg_right">
-			<p class="input">Picture</p>
+			<p class="input" style="font-weight: bold;">Picture</p>
 			<input type="file" id="{{ form.picture.id_for_label }}" name="picture" accept="image/gif, image/jpeg, image/png"required="" style="padding-left: 3em;">
 
-			<p class="input" style="margin-top: 1em;">Vegan</p>
+			<p class="input" style="margin-top: 1em; font-weight: bold;">Vegan</p>
 			<input type="checkbox" id="{{ form.vegan.id_for_label }}" name="{{ form.vegan.html_name }}" >
-			<p class="input">Vegetarian</p>
-			<input type="checkbox" id="{{ form.vegetarian.id_for_label }}" name="{{ form.vegetarian.html_name }}" >
-			<p class="input">Gluten-Free</p>
+			<p class="input" style="font-weight: bold;">Vegetarian</p>
+			<input type="checkbox" style="font-weight: bold;" id="{{ form.vegetarian.id_for_label }}" name="{{ form.vegetarian.html_name }}" >
+			<p class="input" style="font-weight: bold;">Gluten-Free</p>
 			<input type="checkbox" id="{{ form.gluten_free.id_for_label }}" name="{{ form.gluten_free.html_name }}" >
 			
 		</div>

@@ -1,8 +1,9 @@
 <!-- templates/registration/login.html -->
 {% extends 'food/base.html' %}
-
+{% load static %}
 {% block content %}
-<div class="content_container">
+<div class="my_container" style="background-image: url({% static 'images/background5.jpg' %});">
+	<div class="drag">
 	<form method="post" class="login_form" action="{% url 'login' %}">
 		{% csrf_token %}
 		<h1>Sign In</h2>
@@ -16,5 +17,6 @@
 		<input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" required>
 		<button type="submit"><span><i class="fas fa-sign-in-alt"></i></span></button>
 	</form>
+</div>
 </div>
 {% endblock %}

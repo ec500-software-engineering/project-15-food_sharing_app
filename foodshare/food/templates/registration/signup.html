@@ -1,6 +1,8 @@
 {% extends 'food/base.html' %}
 {% block content %}
-<div class="content_container">
+{% load static %}
+<div class="my_container" style="background-image: url({% static 'images/background2.jpg' %});">
+	<div class="drag">
 	<form method="post" class="register_form" action="{% url 'register' %}">
 		{% csrf_token %}
 		<h1>Register</h1>
@@ -34,8 +36,11 @@
 			<input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.html_name }}" class="password2"required >
 			<label>Enter the same password as before, for verification</label>
 		</div>
-		<button type="submit">Create my account</button>
+		<div class="left" style="float: left;">
+		<button type="submit" style="font-weight:bold;">Create my account</button>
+		</div>
 	</form>
+</div>
 </div>
 
 <script>
