@@ -15,7 +15,7 @@
 			<input type="text" id="{{ form.phone.id_for_label }}" name="{{ form.phone.html_name }}" required="">
 
 			<p class="input">Restaurant Address</p>
-			<input type="text" id="address_search" name="{{ form.location.html_name }}" required="" style="margin-bottom: 0;">
+			<input type="search" id="address_search" name="{{ form.location.html_name }}" required="" style="margin-bottom: 0;">
 			<label style="margin-bottom: 1.3em;">Please enter full address (ex. 123 N Main St City, ST 11111)</label>
 
 			<p class="input">Email Address</p>
@@ -39,11 +39,12 @@
 </div>
 
 <script>
-  	var placesAutocomplete = places({
-   		appId: 'plL015VD6UKT',
-   		apiKey: '989bd6db29a5c5c1a269b78c7a95bfd8',
-   		container: document.querySelector('#address_search')
- 	});
-</script>
+		function initAutocomplete() {
+  			autocomplete = new google.maps.places.Autocomplete(
+      			document.getElementById('address_search'));
+  		}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMG1pZuYC62w7geoDmMr0mELCBmoFtvY&libraries=places&callback=initAutocomplete">
+	</script>
 {% endblock %}
 

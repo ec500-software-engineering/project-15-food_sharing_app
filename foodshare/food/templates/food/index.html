@@ -12,19 +12,19 @@
 			</form>
 			<script>
 			function testJS() {
-			var getInput = document.getElementById("search_input").value; 
-			localStorage.setItem("search", getInput);
-			// localStorage.setItem("storageName",getInput);		
+				var getInput = document.getElementById("search_input").value; 
+				localStorage.setItem("search", getInput);
 			}
 			</script>
 		</div>
 		</div>
 	</div>
 	<script>
-  		var placesAutocomplete = places({
-    		appId: 'plL015VD6UKT',
-    		apiKey: '989bd6db29a5c5c1a269b78c7a95bfd8',
-    		container: document.querySelector('#search_input')
-  		});
+		function initAutocomplete() {
+  			autocomplete = new google.maps.places.Autocomplete(
+      			document.getElementById('search_input'));
+  		}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMG1pZuYC62w7geoDmMr0mELCBmoFtvY&libraries=places&callback=initAutocomplete">
 	</script>
 {% endblock %}

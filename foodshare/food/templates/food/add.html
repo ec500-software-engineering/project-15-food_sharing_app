@@ -15,9 +15,6 @@
 		{% endif %}
 		<form method="POST" class="add_food" action="{% url 'add_food' %}" enctype="multipart/form-data">
 			{% csrf_token %}
-		<!-- 	{{form.as_p}}
-			<button type="submit">Submit</button>
- -->
 			<div class="reg_left">
 			<p class="input">Title</p>
 			<input type="text" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" required="">
