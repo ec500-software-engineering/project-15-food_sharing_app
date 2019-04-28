@@ -75,7 +75,7 @@ def add_food(request):
 def edit_food(request, pk):
     food = get_object_or_404(Food, pk=pk)
     if request.method == "POST":
-        form = AddFoodForm(request.POST, instance=food)
+        form = AddFoodForm(request.POST, request.FILES, instance=food)
         if form.is_valid():
             food = form.save(commit=False)
             food.provider = request.user
