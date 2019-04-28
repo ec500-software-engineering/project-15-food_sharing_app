@@ -2,10 +2,9 @@
 {% load static %}
 {% block content %}
 	<div class="content_container">
-			<h2>Food items available</h2>
-			<form class="controls" action="{% url 'food_list' %}">
+			<h2 style="font-weight: bold;">Food items available</h2>
+			<form class="controls" action="{% url 'food_list' %}" method="POST">
 				{% csrf_token %}
-    			<h4>Restrictions</h4>
     			<div class="checkbox">
       				<input type="checkbox" value="vegan" name="restrictions" {% if restrictions.vegan %} checked {% endif%} />
       				<label>Vegan</label>
@@ -13,33 +12,33 @@
       				<label>Vegetarian</label>
       				<input type="checkbox" value="gluten_free" name="restrictions" {% if restrictions.gluten_free %} checked {% endif%} />
       				<label>Gluten-Free</label>
+      				<button type="submit" class="filter_btn" style="margin-left: 1em;">Filter</button>  			
     			</div>
-  				<button type="submit" formmethod="POST">Filter</button>
 			</form>
-			<form action="{% url 'food_list' %}">
-				<button type="submit">Reset Filters</button>
-			</form>
-			<div class="food_item reg_left" style="height: 75vh; overflow-y: scroll;">
-			<ul>
+			<form action="{% url 'food_list' %}" method="GET" style="margin-bottom: 2.5em;">
+      			<button type="submit" class="filter_btn" style="width: 8em;">Reset Filters</button>
+      		</form>
+			<div class="food_item reg_left" style="height: 75vh; width: 50%; overflow-y: scroll; align-items: flex-start;">
+			<ol style="padding-left: 6em;">
 				{% for food in foods%}
-				<li id="{{food.pk}}">
-					<a href="{% url 'food_detail' pk=food.pk %}" id="list">{{food.title}}</a>
-					<ul>
-						<li>vegan: {{food.vegan}}</li>
-						<li>veg: {{food.vegetarian}}</li>
-						<li>gf: {{food.gluten_free}}</li>
-						<li>{{food.location}}</li>
-						<li>
-							{{food.lat}}
-						</li>
-						<li>{{food.lng}}</li>
-						<li>
-							Availabile: {{food.available}}
-						</li>
+				<div class="item" id="{{food.pk}}" onclick="hover('{{food.pk}}')" style="margin-bottom: .6em; text-align: left;">
+				<li>
+					<h5 style="font-weight: bold; padding-left: 2em;"><a href="{% url 'food_detail' pk=food.pk %}" id="list" >{{food.title}}</a></h5>
+					<ul style="list-style-type: none; padding-left: 4em;">
+						{% if food.vegan %}
+							<li>Vegan</li>
+						{% elif food.vegetarian %}
+							<li>Vegetarian</li>
+						{% elif food.gluten_free %}
+							<li>Gluten-Free</li>
+						{% endif %}
 					</ul>
 				</li>
+				</div>
+				{% empty %}
+					<li>No food matching those filters available</li>
 				{% endfor %}
-			</ul>
+			</ol>
 		</div>
 		<div class="map_container reg_right" style="">
 			<div id="map" style="width: 75vh; height: 75vh; position: absolute;"></div>
@@ -54,44 +53,62 @@
 	</div> -->
 </div>
 	<script>
-      // var infoWindow, geocoder, map, marker1;
+      var foodarray = []
+      var markerarray = []
+        	{% for food in foods %}
+        		additem = {'pk': '{{food.pk}}', 'lat': '{{food.lat}}', 'lng': '{{food.lng}}', 'title': '{{food.title}}'};
+        		foodarray.push(additem)
+        	{% endfor %}
+
+        
       function initMap() {
-          var search = localStorage.getItem("search");
-          console.log(search);
       		var boston = {lat: 42.360, lng: -71.058};
         	var map = new google.maps.Map(document.getElementById('map'), {
           		center: boston,
-          		zoom: 11,
-          // 		mapTypeControlOptions: {
-          //   		mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-          //           'styled_map']
-          // }
+          		zoom: 13,
        		 });
+        	
         	var infoWindow = new google.maps.InfoWindow();
-        	{% for food in foods %}
-        		var position = new google.maps.LatLng(parseFloat('{{food.lat}}'), parseFloat('{{food.lng}}'));
 
+        	for(i = 0; i < foodarray.length; i++){
+        		var position = new google.maps.LatLng(parseFloat(foodarray[i].lat), parseFloat(foodarray[i].lng));
         		var marker = new google.maps.Marker({
         			position: position,
         			map: map,
-        			title: '{{food.title}}'
-        		})
+        			title: foodarray[i].title,
+        		});
 
-        		google.maps.event.addListener(marker,'click', function(){
-  						infoWindow.setContent(
-  							// '<h3>'+ '{{food.title}}'+'</h3>'
-  							"<h5><a href=\"{% url 'food_detail' pk=food.pk %}\">{{food.title}}</a></h5>"
-  							);
-  						infoWindow.open(map,marker);
+        		var obj = {'pk': foodarray[i].pk, 'marker': marker}
+        		markerarray.push(obj);
 
-  						document.getElementById("{{food.pk}}").classList.add('hover');
-  					
-      //   		google.maps.event.addListener(marker, 'mouseover', function(){
-      //   				infoWindow.open(map,marker);
-      //   				
-            });  
-        	{% endfor %}
+        		var url = "{% url 'food_detail' 123 %}".replace('123', foodarray[i].pk);
 
+        		var content =   "<h5 id=\"info_"+ foodarray[i].pk+"\">" + foodarray[i].title +"</h5><p><a style=\"text-decoration: underline\" href=\""+url+"\">See More Details</a></p>"
+
+        		google.maps.event.addListener(marker,'click', (function(marker,content,infoWindow){ 
+    				return function() {
+    					infoWindow.close()
+       					 infoWindow.setContent(content);
+        					infoWindow.open(map,marker);
+    						};
+						})(marker,content,infoWindow));
+        	}
+        	
+			// function isOpen(infoWindow){
+   //  			var map = infoWindow.getMap();
+   //  			return (map !== null && typeof map !== "undefined");
+			// }
+
+			// var check = "info_"+foodarray[i].pk;
+
+			// if(document.getElementById(check)!== null){
+			// 	console.log(check)  
+			// }
+			// else{
+			// 	console.log("not there")
+			// }
+
+        	
           // get users current location.
           infoWindow2 = new google.maps.InfoWindow;
           if (navigator.geolocation) {
@@ -103,7 +120,7 @@
           var marker2 = new google.maps.Marker({position: pos, map: map});
           marker2.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
           google.maps.event.addListener(marker2,'click', function(){
-          infoWindow2.setContent('you are here');
+          infoWindow2.setContent('You are here.');
             infoWindow2.open(map,marker2);
             });
           map.setCenter(pos);
@@ -116,8 +133,11 @@
           }
 
           // search some place.
-          geocoder = new google.maps.Geocoder();
-          geocoder.geocode( { 'address': search}, function(results, status) {
+          if(localStorage.getItem("search") !== ""){
+          	var search = localStorage.getItem("search");
+          	console.log(search);
+          	geocoder = new google.maps.Geocoder();
+         	 geocoder.geocode( { 'address': search}, function(results, status) {
           	if (status == 'OK') {
             // map.setCenter(results[0].geometry.location);
             var marker3 = new google.maps.Marker({
@@ -135,189 +155,30 @@
             alert('Geocode was not successful for the following reason: ' + status);
           }
         	});
-          
-  			// function setMarkers(dict){
-  			// 	for (var i = 0; i < Object.keys(dict).length; i++){
-  			// 		var marker1 = new google.maps.Marker({
-  			// 			position: {lat: dict[i].lat, lng: dict[i].lng},
-  			// 			map: map,
-  			// 			title: dict[i].title
-  			// 		});
-  					
-  			// 		google.maps.event.addListener(marker1, 'click', function(){
-  			// 			infoWindow.setContent('<h3>'+ this.title+'</h3>');
-  			// 			infoWindow.open(map,this);
-  			// 		});
-  			// 		marker1.setMap(map);
-  			// 		console.log(dict[i]);
-  			// 	}
-  			// }
-
-        // Create a new StyledMapType object, passing it an array of styles,
-        // and the name to be displayed on the map type control.
-        // var styledMapType = new google.maps.StyledMapType(
-        //     [
-        //       {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
-        //       {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
-        //       {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
-        //       {
-        //         featureType: 'administrative',
-        //         elementType: 'geometry.stroke',
-        //         stylers: [{color: '#c9b2a6'}]
-        //       },
-        //       {
-        //         featureType: 'administrative.land_parcel',
-        //         elementType: 'geometry.stroke',
-        //         stylers: [{color: '#dcd2be'}]
-        //       },
-        //       {
-        //         featureType: 'administrative.land_parcel',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{color: '#ae9e90'}]
-        //       },
-        //       {
-        //         featureType: 'landscape.natural',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#dfd2ae'}]
-        //       },
-        //       {
-        //         featureType: 'poi',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#dfd2ae'}]
-        //       },
-        //       {
-        //         featureType: 'poi',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{color: '#93817c'}]
-        //       },
-        //       {
-        //         featureType: 'poi.park',
-        //         elementType: 'geometry.fill',
-        //         stylers: [{color: '#a5b076'}]
-        //       },
-        //       {
-        //         featureType: 'poi.park',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{color: '#447530'}]
-        //       },
-        //       {
-        //         featureType: 'road',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#f5f1e6'}]
-        //       },
-        //       {
-        //         featureType: 'road.arterial',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#fdfcf8'}]
-        //       },
-        //       {
-        //         featureType: 'road.highway',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#f8c967'}]
-        //       },
-        //       {
-        //         featureType: 'road.highway',
-        //         elementType: 'geometry.stroke',
-        //         stylers: [{color: '#e9bc62'}]
-        //       },
-        //       {
-        //         featureType: 'road.highway.controlled_access',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#e98d58'}]
-        //       },
-        //       {
-        //         featureType: 'road.highway.controlled_access',
-        //         elementType: 'geometry.stroke',
-        //         stylers: [{color: '#db8555'}]
-        //       },
-        //       {
-        //         featureType: 'road.local',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{color: '#806b63'}]
-        //       },
-        //       {
-        //         featureType: 'transit.line',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#dfd2ae'}]
-        //       },
-        //       {
-        //         featureType: 'transit.line',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{color: '#8f7d77'}]
-        //       },
-        //       {
-        //         featureType: 'transit.line',
-        //         elementType: 'labels.text.stroke',
-        //         stylers: [{color: '#ebe3cd'}]
-        //       },
-        //       {
-        //         featureType: 'transit.station',
-        //         elementType: 'geometry',
-        //         stylers: [{color: '#dfd2ae'}]
-        //       },
-        //       {
-        //         featureType: 'water',
-        //         elementType: 'geometry.fill',
-        //         stylers: [{color: '#b9d3c2'}]
-        //       },
-        //       {
-        //         featureType: 'water',
-        //         elementType: 'labels.text.fill',
-        //         stylers: [{color: '#92998d'}]
-        //       }
-        //     ],
-        //     {name: 'Styled Map'});
-
-        // Create a map object, and include the MapTypeId to add
-        // to the map type control.
-        
-        // geocoder = new google.maps.Geocoder();
-       //  {% for food in foods %}
-       // //  	geocoder.geocode('{{ food.location }}', function(results, status){
-       // //  		if (status == google.maps.GeocoderStatus.OK) 
-    			// // {
-      	// 			var marker = new google.maps.Marker(
-      	// 			{
-       //   		 		map: map,
-       //    				position: {lat: {{food.lat}}, lng: {{food.lng}}}
-       //    				title: '{{food.title}}'
-      	// 			});
-       //  		// });
-       //  {% endfor %}
-
       }
+          
+  		}
+  		
 
-      // function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      //   infoWindow.setPosition(pos);
-      //   infoWindow.setContent(browserHasGeolocation ?
-      //                         'Error: The Geolocation service failed.' :
-      //                         'Error: Your browser doesn\'t support geolocation.');
-      //   infoWindow.open(map);
+  		setTimeout(function(){
+    console.log(markerarray);
+},3000);
+  			function hover(pk){
+  				var items = document.getElementsByClassName("item");
+    			for(j=0; j<items.length; j++){		
+    					items[j].classList.remove("selected");
+    			}
+  				var index;
+  				for(i=0; i < markerarray.length; i++){
+    				if(markerarray[i].pk == pk){
+       					index = i;
+        				break;
+    				}
+    			}
+        		google.maps.event.trigger(markerarray[index].marker, 'click');
+    			document.getElementById(pk).classList.add("selected");
+        	}
 
-      //   //Associate the styled map with the MapTypeId and set it to display.
-      //   map.mapTypes.set('styled_map', styledMapType);
-      //   map.setMapTypeId('styled_map');
-
-      // }
-
-    // function codeAddress() {
-    //     var address = document.getElementById('address').value;
-    //     geocoder.geocode( { 'address': address}, function(results, status) {
-    //       if (status == 'OK') {
-    //         map.setCenter(results[0].geometry.location);
-    //         var marker2 = new google.maps.Marker({
-    //             map: map,
-    //             position: results[0].geometry.location
-    //         });
-    //         if(marker2 != marker1 && marker1 != null) {
-    //           marker1.setMap(null);
-
-    //         }
-    //         marker1 = marker2;
-    //       } else {
-    //         alert('Geocode was not successful for the following reason: ' + status);
-    //       }
-    //     });
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMG1pZuYC62w7geoDmMr0mELCBmoFtvY&language=en&callback=initMap">

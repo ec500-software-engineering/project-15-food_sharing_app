@@ -1,0 +1,27 @@
+{% extends 'food/base.html' %}
+{% load static %}
+{% block content %}
+	<div class="content_container">
+			<h2 style="margin-bottom: 1em; font-weight: bold;">Food items you've listed</h2>
+			<div>
+			<ul style="padding-left: 6em; margin: auto; width: 60vh;">
+				{% for food in foods%}
+				<div class="item" id="{{food.pk}}" style="margin-bottom: .6em; text-align: left;">
+				<li>
+					<h5 style="font-weight: bold; padding-left: 2em;"><a href="{% url 'food_detail' pk=food.pk %}" id="list" >{{food.title}}</a></h5>
+					<ul style="list-style-type: none; padding-left: 4em;">
+						{% if food.available %}
+							<li>Still Availabile</li>
+						{% else %}
+							<li>Claimed</li>
+						{% endif %}
+					</ul>
+				</li>
+				</div>
+				{% empty %}
+					<li>No food currently listed</li>
+				{% endfor %}
+			</ul>
+		</div>
+</div>
+{% endblock %}

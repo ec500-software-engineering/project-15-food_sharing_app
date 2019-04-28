@@ -2,23 +2,53 @@
 {% load static %}
 {% block content %}
 	<div class="content_container">
-		<h1>{{ food.title }}</h1>
-		<h3>{{ restaurant.name }}</h3>
-		<h3>{{ restaurant.location }}</h3>
+		<div class="reg_right" style="width: 50%;">
+		<h3 style="font-weight: bold;">Food Item: {{ food.title }}</h3>
+		<h5>Posted By: {{ restaurant.name }}</h5>
+		<h5>Location: {{ restaurant.location }}</h5>
+		{% if food.picture != None %}
+			<img src="/media/{{food.picture}}" height="330" width="330">
+		{% endif %}
 		<p>{{ food.description }}</p>
 
 		{% if user.is_authenticated and user == food.provider %}
-			<button><a href="{% url 'food_edit' pk=food.pk %}">Edit<i class="far fa-edit"></i></a></button>
-			<form action="{% url 'food_delete' pk=food.pk %}" method="POST">
+			<button><a href="{% url 'food_edit' pk=food.pk %}">Edit<i class="far fa-edit" style="padding-left: .4em;"></i></a></button>
+			<form action="{% url 'food_delete' pk=food.pk %}" method="POST" style="display: inline-block;">
   				{% csrf_token %}
-  				<button type=submit onclick="return confirm('Are you sure you want to delete {{ food.title }}?');">Delete<i class="far fa-trash-alt"></i></button>
+  				<button type=submit onclick="return confirm('Are you sure you want to delete {{ food.title }}?');" style="width: 6em;">Delete<i class="far fa-trash-alt" style="padding-left: .4em"></i></button>
 			</form>
 		{% else %}
 			{% if food.available %}
-				<button><a href="{% url 'claim_food' pk=food.pk%}">Claim Food</a></button>
+				<form action="{% url 'claim_food' pk=food.pk%}">
+					<button style="width: 7em;">Claim Food</button>
+				</form>
+				
 			{% else %}
-				<p>Food has been claimed</p>
+				<p style="text-decoration: underline;underline;">Food has been claimed</p>
 			{% endif %}
 		{% endif %}
 	</div>
+	<div class="map_container reg_right" style="">
+			<div id="map" style="width: 50%; height: 75vh; position: absolute;"></div>
+	</div>
+	</div>
+	<script type="text/javascript">
+		function initMap() {
+      		var position = new google.maps.LatLng(parseFloat('{{food.lat}}'), parseFloat('{{food.lng}}'));
+
+        	var map = new google.maps.Map(document.getElementById('map'), {
+          		center: position,
+          		zoom: 15,
+       		 });
+
+        	var marker = new google.maps.Marker({
+        		position: position,
+        		map: map,
+        		title: '{{food.title}}'
+        	})
+		}
+	</script>
+	 <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdMG1pZuYC62w7geoDmMr0mELCBmoFtvY&language=en&callback=initMap">
+    </script>
 {% endblock %}

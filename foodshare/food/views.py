@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DeleteView
 from django.core.mail import EmailMessage, get_connection
 from django.conf import settings
-from .forms import SignUpForm, AddFoodForm, ClaimFoodForm
+from .forms import SignUpForm, AddFoodForm, ClaimFoodForm, EditProfile
 from .models import User, RestaurantProfile, Food
 import googlemaps
 
@@ -50,7 +50,7 @@ def register(request):
 @login_required
 def add_food(request):
     if request.method == "POST":
-        form = AddFoodForm(request.POST)
+        form = AddFoodForm(request.POST, request.FILES)
         restaurant = RestaurantProfile.objects.get(user=request.user)
         if form.is_valid():
             obj = Food(**form.cleaned_data)
@@ -63,10 +63,13 @@ def add_food(request):
             obj.lng = longitude
             obj.save()
             return redirect('food_list')
+        else :
+            context = {'form': form}
+            return render(request, 'food/add.html', context)
     else:
         form = AddFoodForm()
         context = {'form': form}
-    return render(request, 'food/add.html', context)
+        return render(request, 'food/add.html', context)
 
 @login_required
 def edit_food(request, pk):
@@ -100,10 +103,12 @@ def food_list(request):
         if 'gluten_free' in restrictions:
             food = food.filter(gluten_free=True)
             res['gluten_free'] = True
+        food = food.filter(available=True)
         context = {'foods': food, 'restrictions': res}
         print(res)
         return render(request, 'food/food_list.html', context)
-    else:        
+    else:
+        food = food.filter(available=True)        
         print(res)
         context = {'foods': food, 'restrictions': res}
         return render(request, 'food/food_list.html', context)
@@ -159,3 +164,28 @@ def send_email(first, last, phone, email, restaurant, food):
         reply_to = [restaurant.email,]
     )
     connection.send_messages([res_email, cus_email])
+
+@login_required
+def edit_profile(request):
+    restaurant = RestaurantProfile.objects.get(user=request.user)
+    if request.method == 'POST' :
+       form = EditProfile(request.POST, instance=restaurant)
+       if form.is_valid():
+            form.save();
+            return redirect('/food/view')
+
+    else:
+        form = EditProfile(instance=restaurant)
+        context = {'form': form}
+        return render(request, 'accounts/edit_profile.html', context)
+
+@login_required
+def foods_listed(request):
+    food = Food.objects.all().filter(provider=request.user) 
+    context = {'foods': food}
+    return render(request, 'food/foods_listed.html', context)
+
+
+
+
+

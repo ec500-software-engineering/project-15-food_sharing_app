@@ -25,7 +25,7 @@ class SignUpForm(UserCreationForm):
 class AddFoodForm(forms.ModelForm):
 	class Meta:
 		model = Food
-		fields = ('title', 'description', 'vegan', 'vegetarian', 'gluten_free')
+		fields = ('title', 'description', 'picture','vegan', 'vegetarian', 'gluten_free')
 
 class ClaimFoodForm(forms.Form):
 	first_name = forms.CharField(required=True)
@@ -36,3 +36,16 @@ class ClaimFoodForm(forms.Form):
 		max_length = 10
 	)
 	email = forms.EmailField()
+
+class EditProfile(forms.ModelForm):
+	name = forms.CharField(required=True)
+	phone = forms.CharField(
+		required = True,
+		validators = [number_validator],
+		max_length = 10
+	)
+	location = forms.CharField()
+	class Meta:
+		model = User
+		fields = ('name', 'phone', 'location', 'email')
+

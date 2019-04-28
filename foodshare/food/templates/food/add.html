@@ -2,11 +2,47 @@
 {% load static %}
 {% block content %}
 	<div class="content_container">
-		<h1>Add Food</h1>
-		<form method="post" class="add_food" action="{% url 'add_food' %}">
+		<h1 style="font-weight: bold;">Add Food</h1>
+		{% if form.errors %}
+			{% if form.title.errors %}
+				<p>error w title</p>
+			{% elif form.description.errors %}
+				<p>error w des</p>
+			{% elif form.picture.errors %}
+				<p>error w pic</p>
+			<!-- {% firstof form.title.errors form.description.errors form.picture.errors %} -->
+			{% endif %}
+		{% endif %}
+		<form method="POST" class="add_food" action="{% url 'add_food' %}" enctype="multipart/form-data">
 			{% csrf_token %}
-			{{form.as_p}}
-			<button type="submit">Submit</button>	
+		<!-- 	{{form.as_p}}
+			<button type="submit">Submit</button>
+ -->
+			<div class="reg_left">
+			<p class="input">Title</p>
+			<input type="text" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" required="">
+
+			<p class="input" style="margin-top: 2em;">Description</p>
+			<textarea id="{{ form.description.id_for_label }}" name="{{ form.description.html_name }}" required="" rows="6" cols="30"></textarea> 
+		</div>
+		
+		<div class="reg_right">
+			<p class="input">Picture</p>
+			<input type="file" id="{{ form.picture.id_for_label }}" name="picture" accept="image/gif, image/jpeg, image/png"required="" style="padding-left: 3em;">
+
+			<p class="input" style="margin-top: 1em;">Vegan</p>
+			<input type="checkbox" id="{{ form.vegan.id_for_label }}" name="{{ form.vegan.html_name }}" >
+			<p class="input">Vegetarian</p>
+			<input type="checkbox" id="{{ form.vegetarian.id_for_label }}" name="{{ form.vegetarian.html_name }}" >
+			<p class="input">Gluten-Free</p>
+			<input type="checkbox" id="{{ form.gluten_free.id_for_label }}" name="{{ form.gluten_free.html_name }}" >
+			
+		</div>
+		<div>
+			<button type="submit" style="width: 9em;">Add new food</button>
+		</div>
+		
+
 		</form>	
 	</div>
 {% endblock %}

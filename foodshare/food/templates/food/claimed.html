@@ -2,9 +2,9 @@
 {% load static %}
 {% block content %}
 	<div class="content_container">
-		<h1>You just claimed {{ food.title }}</h1>
-		<h3>{{ restaurant.name }}</h3>
-		<h3>{{ food.location }}</h3>
+		<h1 style="font-weight: bold;">You just claimed {{ food.title }}</h1>
+		<h3>Restaurant: {{ restaurant.name }}</h3>
+		<h3>Location: {{ food.location }}</h3>
 		<p>You can pick up your food from {{ restaurant.name }} at {{ food.location }}. To contact {{ food.provider }}, call {{ restaurant.phone }} or email {{ restaurant.email }}</p>
 	</div>
 {% endblock %}

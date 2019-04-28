@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 	<div class="content_container">
-		<h1>Edit Food</h1>
+		<h1 style="font-weight: bold;">Edit Food</h1>
 		<form method="POST">
 			{% csrf_token %}
 			{{form.as_p}}

@@ -9,4 +9,6 @@ urlpatterns = [
 	path('food/<int:pk>/claim/', views.claim_food, name='claim_food'),
 	path('food/add', views.add_food, name='add_food'),
 	path('food/view', views.food_list, name='food_list'),
+	path('account/edit', views.edit_profile, name='edit_profile'),
+	path('account/food', views.foods_listed, name='foods_listed'),
 ]

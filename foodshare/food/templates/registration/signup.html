@@ -7,7 +7,7 @@
 		{% if form.errors %}
 			{% firstof form.phone.errors form.username.errors form.email.errors form.password1.errors form.password2.errors %}
 		{% endif %}
-		<div class="reg_left">
+		<div class="reg_left" style="height: 75vh;">
 			<p class="input">Name of Restaurant</p>
 			<input type="text" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" required="">
 
@@ -15,7 +15,8 @@
 			<input type="text" id="{{ form.phone.id_for_label }}" name="{{ form.phone.html_name }}" required="">
 
 			<p class="input">Restaurant Address</p>
-			<input type="text" id="address_search" name="{{ form.location.html_name }}" required="">
+			<input type="text" id="address_search" name="{{ form.location.html_name }}" required="" style="margin-bottom: 0;">
+			<label style="margin-bottom: 1.3em;">Please enter full address (ex. 123 N Main St City, ST 11111)</label>
 
 			<p class="input">Email Address</p>
 			<input type="text" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}" required="">
