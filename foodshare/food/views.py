@@ -171,7 +171,7 @@ def edit_profile(request):
     if request.method == 'POST' :
        form = EditProfile(request.POST, instance=restaurant)
        if form.is_valid():
-            form.save();
+            form.save()
             return redirect('/food/view')
 
     else:
