@@ -27,11 +27,13 @@
 					<ul style="list-style-type: none; padding-left: 4em;">
 						{% if food.vegan %}
 							<li>Vegan</li>
-						{% elif food.vegetarian %}
+            {% endif %}
+						{% if food.vegetarian %}
 							<li>Vegetarian</li>
-						{% elif food.gluten_free %}
+            {% endif %}
+						{% if food.gluten_free %}
 							<li>Gluten-Free</li>
-						{% endif %}
+            {% endif %}
 					</ul>
 				</li>
 				</div>
