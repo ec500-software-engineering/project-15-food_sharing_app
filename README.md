@@ -30,16 +30,31 @@ Across the world, there are restaurants other food services that waste tons of e
 For the first sprint, we wanted to research as much as we could about the different technologies and different architectures we could build. Our goal for the first sprint was to have a clear plan of what kind of application we are making, what technologies/APIs we wanted to use, and how to split up work for the future. For our second sprint, we want to implement our technologies and have a prototype working!  
 
 ## Sprint 2
-For now we have built the initial main page for charities to search for restaurants around them, sign in and sign up page for restaurants. Considering that the users who are looking for food don't have to register in our website, we delete the users registration part in our website and backedn database.
-### Initial main page
-<center><img src="./docs/mainpage_new.png" width="100%"/></center>
+For now we have built the initial main page for charities to search for restaurants around them, sign in and sign up page for restaurants. Considering that the users who are looking for food don't have to register in our website, we delete the users registration part in our website and backedn database.   
+
+## Final   
+
+### Main page
+<center><img src="./docs/MainPage.png" width="100%"/></center>
 Charities can search the information about restaurents and foods offerd by input their address.  
 
+Once you have search a place or you just go with the default location, the page will jump to the find food page.  
+### Find Foods Around You  
+In this page, you will find foods listed by restaurants, the left part is the food listed and some details about its categories.  Page is showed as followed.  
+<center><img src="./docs/FoodItemPage.png" width="100%"/></center>
+
 ### Sign in page
-<center><img src="./docs/signin.png" width="100%"/></center>  
+<center><img src="./docs/SignInPage.png" width="100%"/></center>  
 For restaurants who are willing to offer foods they could firstly sign in.  
 
 ### Sign up page
-<center><img src="./docs/signup.png" width="100%"/></center>  
-Sign up page for restaurants. 
+<center><img src="./docs/SignUpPage.png" width="100%"/></center>  
+Sign up page for restaurants.  
+
+### Add food page  
+After restaurants have signed in, they are allowed freely to add foods that they would like to share with others when they click the add food item. And when they are choosing food, they could upload image of food, and write description abot that, also they could  pick base categories for the food.  
+<center><img src="./docs/AddFoodPage.png" width="100%"/></center>
+
+
+
 
