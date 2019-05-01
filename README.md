@@ -51,9 +51,10 @@ For restaurants who are willing to offer foods they could firstly sign in.
 <center><img src="./docs/SignUpPage.png" width="100%"/></center>  
 Sign up page for restaurants.  
 
-### Add food page  
+### Share Your Food And Post It  
 After restaurants have signed in, they are allowed freely to add foods that they would like to share with others when they click the add food item. And when they are choosing food, they could upload image of food, and write description abot that, also they could  pick base categories for the food.  
-<center><img src="./docs/AddFoodPage.png" width="100%"/></center>
+<center><img src="./docs/AddFoodPage.png" width="100%"/></center>  
+### Manage Your Food Post 
 
 
 
